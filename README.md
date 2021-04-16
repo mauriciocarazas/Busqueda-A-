@@ -15,5 +15,8 @@ Miembros del Equipo
 - Carl Villachica   carl.villachica@ucsp.edu.pe
 - Joel Challco      joel.challco@ucsp.edu.pe
 
-
+BUSQUEDA A*
 ![Búsqueda A](https://user-images.githubusercontent.com/26486569/114959930-aab98780-9e2b-11eb-9b6d-d6bf5367da2f.jpeg)
+
+
+BUSQUEDA DFS
