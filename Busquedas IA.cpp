@@ -68,16 +68,16 @@ void aStar(int x0, int y0, int x1, int y1) {
     vector<elem*>::iterator it;
     elem* e0 = new elem(x0 * TAM + y0, 0, 0);
     open.push_back(e0);
-    grafo[x0][y0] = 0;
+    grafo[x0][y0] = -1;
     int x, y, h;
     do {
-        cout << e0->posix / TAM << " " << e0->posix % TAM << endl;
+        cout << e0->posix / TAM << " " << e0->posix % TAM << endl; //Closetset - lista que guarda el camino 
         open.erase(open.begin());
         for (int i = 0; i < 8; ++i) {
             x = e0->posix / TAM + poss[i][0];
             y = e0->posix % TAM + poss[i][1];
             if (x > -1 && y > -1 && x < TAM && y < TAM && grafo[x][y]>0 && !inVector(open, x * TAM + y)) {
-                h = max(abs(x - x1), abs(y - y1));
+                h = max(abs(x - x1), abs(y - y1)); // heuristica - estimacion de pasos para llegar al destino
                 //open.emplace(new elem(x*TAM+y,h+e0->g+1,e0->g+1);
                 if (open.empty())
                     open.push_back(new elem(x * TAM + y, h + e0->g + 1, e0->g + 1));
@@ -85,14 +85,14 @@ void aStar(int x0, int y0, int x1, int y1) {
                     it = open.begin();
                     while (it != open.end() && h + e0->g + 1 > (*it)->f)
                         it++;
-                    open.insert(it, new elem(x * TAM + y, h + e0->g + 1, e0->g + 1));
+                    open.insert(it, new elem(x * TAM + y, h + e0->g + 1, e0->g + 1)); // cacula el valor de F que es la estimacion de pasos para llegar al objetivo
                 }
             }
         }
-        grafo[e0->posix / TAM][e0->posix % TAM] = 0;
+        grafo[e0->posix / TAM][e0->posix % TAM] = -1; // actualiza el valor de la posicion que se a recorrido
         e0 = *(open.begin());
     } while (e0->posix / TAM != x1 || e0->posix % TAM != y1);
-    cout << e0->posix / TAM << " " << e0->posix % TAM << endl;
+    //cout << e0->posix / TAM << " " << e0->posix % TAM << endl;
 }
 
 int main()
@@ -109,7 +109,9 @@ int main()
     random_shuffle(vals1, vals1 + TAM2);
     random_shuffle(vals2, vals2 + TAM2);
     for (int k = 0; k < TAM20; ++k)
-        grafo[vals1[k]][vals2[k]] = -1;//impasables
-    //dfs(vals1[TAM20+1],vals2[TAM20+1],vals1[TAM20+2],vals2[TAM20+2]);
-    aStar(vals1[TAM20 + 1], vals2[TAM20 + 1], vals1[TAM20 + 2], vals2[TAM20 + 2]);
+        grafo[vals1[k]][vals2[k]] = -2;//impasables
+
+      //dfs(19, 6, 5, 17);
+    aStar(19, 6, 5, 17);
+    system("pause");
 }
