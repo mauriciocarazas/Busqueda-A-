@@ -4,3 +4,9 @@ Practica de laboratorio del  tema de búsquedas - búsqueda A* y búsqueda en pr
 
 Version 1.0
 Sin interfaz Gráfica
+
+Miembros del Equipo 
+
+- Mauricio Carazas  mauricio.carazas@ucsp.edu.pe
+- Carl Villachica   carl.villachica@ucsp.edu.pe
+- Joel Challco      joel.challco@ucsp.edu.pe
